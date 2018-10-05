@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.Calendar;
-
 /**
  *
  * @author CARLOS AIRES
@@ -10,8 +8,8 @@ public class ContatoModel {
     private int id;
     private String nome;
     private String email;
+    private String telefone;
     private String endereco;
-    private String dataNascimento;
     
     public void setId(int id) {
         this.id = id;
@@ -34,18 +32,17 @@ public class ContatoModel {
         return this.email;
     }
     
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public String getTelefone() {
+        return this.telefone;
+    }
+    
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
     public String getEndereco() {
         return this.endereco;
     }
-    
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-    public String getDataNascimento() {
-        return this.dataNascimento;
-    }
-    
 }

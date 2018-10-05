@@ -10,7 +10,6 @@ import Model.ProdutoModel;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import lib.Form;
 
 /**
  *
@@ -161,22 +160,8 @@ public class CadasstroProduto extends javax.swing.JFrame {
         String genero = String.valueOf(jComboBox2.getSelectedItem());
         String tamanho = String.valueOf(jComboBox3.getSelectedItem());
         String cor = String.valueOf(jComboBox4.getSelectedItem());
-        //String qtdPrd = String.valueOf(jSpinner1.getSelectedItem());
-        
-        ProdutoModel objModel = new ProdutoModel();
-        objModel.setNomeProd((nomeProd.toUpperCase()));
-        objModel.setTipo(tipo.toUpperCase());
-        objModel.setGenero(genero.toUpperCase());
-        objModel.setTamanho(tamanho.toUpperCase());
-        objModel.setCor(cor.toUpperCase());
-        
-        ProdutoDao objDao = new ProdutoDao();
-        
-        try {
-            objDao.salvar(objModel);
-        } catch (SQLException ex) {
-            Logger.getLogger(CadasstroProduto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        // Aguardando VIEW para testes
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

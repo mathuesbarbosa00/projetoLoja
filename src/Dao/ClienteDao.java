@@ -17,23 +17,22 @@ public class ClienteDao {
         
         //ContatoModel objModel = new ContatoModel();
         
-        String nome, email, endereco, dataNascimento;
+        String nome, email, telefone, endereco;
         
         nome = objModel.getNome();
         email = objModel.getEmail();
+        telefone = objModel.getTelefone();
         endereco = objModel.getEndereco();
-        dataNascimento = objModel.getDataNascimento();
-
+        
         Connection con = new Banco().getConnection();
 
-        String sql = "INSERT INTO clientes (TXT_NOME, TXT_EMAIL, TXT_ENDERECO, DAT_DATA_NASCIMENTO) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO tb_clientes (TXT_NOME, TXT_EMAIL, TXT_TELEFONE, TXT_ENDERECO) VALUES (?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         
         stmt.setString(1, nome);
         stmt.setString(2, email);
-        stmt.setString(3, endereco);
-        stmt.setString(4, dataNascimento);
-        //stmt.setDate(4, new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+        stmt.setString(3, telefone);
+        stmt.setString(4, endereco);
         
         stmt.execute();
         stmt.close();
@@ -49,7 +48,7 @@ public class ClienteDao {
         
         Connection con = new Banco().getConnection();
         
-        String sql = "UPDATE clientes SET FLG_STATUS = 'D' WHERE ID = (?)";
+        String sql = "UPDATE tb_clientes SET FLG_STATUS = 'D' WHERE ID = (?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         
         stmt.setInt(1, id);
@@ -66,7 +65,7 @@ public class ClienteDao {
         
         Connection con = new Banco().getConnection();
         
-        String sql = "SELECT * FROM cliente WHERE ID = (?)";
+        String sql = "SELECT * FROM tb_clientes WHERE ID = (?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         
         stmt.setInt(1, id);

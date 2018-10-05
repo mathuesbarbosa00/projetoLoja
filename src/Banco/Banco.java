@@ -1,4 +1,3 @@
-
 package Banco;
 
 import java.sql.Connection;
@@ -13,7 +12,7 @@ public class Banco {
     
     public Connection getConnection() {
         try{
-            return DriverManager.getConnection("jdbc:mysql://localhost/loja", "root", "");
+            return DriverManager.getConnection("jdbc:mysql://localhost/BD_LOJA", "root", "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

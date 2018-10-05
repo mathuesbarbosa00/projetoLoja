@@ -12,7 +12,9 @@ public class ProdutoModel {
     private String genero;
     private String tamanho;
     private String cor;
-    private int qtdProd;
+    private String marca;
+    private int qtdEstq;
+    private int qtdMin;
     
     public void setId(int idProd) {
         this.idProd = idProd;
@@ -54,5 +56,26 @@ public class ProdutoModel {
     }
     public String getCor() {
         return this.cor;
+    }
+    
+    public void setMarca(String marca ) {
+        this.marca = marca;
+    }
+    public String getMarca() {
+        return this.marca;
+    }
+    
+    public void setQtdEstq(int qtdEstq ) {
+        this.qtdEstq = qtdEstq;
+    }
+    public int getQtdEstq() {
+        return this.qtdEstq;
+    }
+    
+    public void setQtdMin(int qtdMin ) {
+        this.qtdMin = qtdMin;
+    }
+    public int getQtdMin() {
+        return this.qtdMin;
     }
 }

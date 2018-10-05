@@ -5,7 +5,7 @@
  */
 package View;
 
-import Dao.ClienteDao;
+import Controller.ClienteControlle;
 import Model.ContatoModel;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -40,9 +40,9 @@ public class CadastroCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jFieldEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jFieldDataNascimento = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jFieldEndereco = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jFieldTelefone = new javax.swing.JTextField();
         jBtnSalvarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,9 +54,9 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jLabel3.setText("E-mail");
 
-        jLabel4.setText("Endereço");
+        jLabel4.setText("Telefone");
 
-        jLabel5.setText("Data Nascimento");
+        jLabel5.setText("Endereço");
 
         jBtnSalvarCliente.setText("Salvar");
         jBtnSalvarCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -78,9 +78,9 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
                     .addComponent(jFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBtnSalvarCliente))
                 .addContainerGap(255, Short.MAX_VALUE))
         );
@@ -100,11 +100,11 @@ public class CadastroCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jFieldDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnSalvarCliente)
                 .addContainerGap(14, Short.MAX_VALUE))
@@ -127,24 +127,23 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void jBtnSalvarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarClienteActionPerformed
         String nome = jFieldNome.getText();
         String email = jFieldEmail.getText();
+        String telefone = jFieldTelefone.getText();
         String endereco = jFieldEndereco.getText();
-        String dataNascimento = jFieldDataNascimento.getText();
         
         ContatoModel objModel = new ContatoModel();
         objModel.setNome(nome);
         objModel.setEmail(email);
+        objModel.setTelefone(telefone);
         objModel.setEndereco(endereco);
-        objModel.setDataNascimento(dataNascimento);
-        
-        objModel.setId(2);
-        
-        ClienteDao objDao = new ClienteDao();
+
+        ClienteControlle ctrlCliente = new ClienteControlle();
         try {
-            objDao.salvar(objModel);
-            objDao.deletar(objModel);
+            ctrlCliente.chkForm(nome, email, telefone, endereco);
         } catch (SQLException ex) {
             Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }//GEN-LAST:event_jBtnSalvarClienteActionPerformed
 
     
@@ -162,10 +161,10 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnSalvarCliente;
-    private javax.swing.JTextField jFieldDataNascimento;
     private javax.swing.JTextField jFieldEmail;
     private javax.swing.JTextField jFieldEndereco;
     private javax.swing.JTextField jFieldNome;
+    private javax.swing.JTextField jFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

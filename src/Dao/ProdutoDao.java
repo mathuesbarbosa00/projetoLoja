@@ -16,7 +16,7 @@ public class ProdutoDao {
     public void salvar(ProdutoModel objModel) throws SQLException {
         Connection con = new Banco().getConnection();
         
-        String sql = "INSERT INTO produtos (TXT_NOME_PRODUTO, TXT_TIPO, TXT_GENERO, TXT_TAMANHO, TXT_COR) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO tb_produtos (TXT_NOME_PROD, TXT_TIPO, TXT_GENERO, TXT_TAMANHO, TXT_COR, TXT_MARCA, QTD_ESTQ, QTD_MIN_ESTQ) VALUES (?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(sql);
         
         String nomeProd = objModel.getNomeProd();
@@ -24,12 +24,18 @@ public class ProdutoDao {
         String genero = objModel.getGenero();
         String tamanho = objModel.getTamanho();
         String cor = objModel.getCor();
+        String marca = objModel.getMarca();
+        int qtdEstq = objModel.getQtdEstq();
+        int qtdMinEstq = objModel.getQtdMin();
         
         stmt.setString(1, nomeProd);
         stmt.setString(2, tipo);
         stmt.setString(3, genero);
         stmt.setString(4, tamanho);
         stmt.setString(5, cor);        
+        stmt.setString(6, marca);
+        stmt.setInt(7, qtdEstq);
+        stmt.setInt(8, qtdMinEstq);
         
         
         stmt.execute();
